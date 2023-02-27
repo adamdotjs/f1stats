@@ -3,6 +3,10 @@ type Params = {
 	offset?: string;
 };
 
+export const metadata = {
+	title: "Formula One Drivers Listing",
+};
+
 async function getDrivers(params: Params) {
 	const res = await fetch(
 		`http://ergast.com/api/f1/drivers.json?limit=${params.limit}&offset=${params.offset}`

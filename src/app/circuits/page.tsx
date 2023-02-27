@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 async function getCircuits() {
 	const res = await fetch("http://ergast.com/api/f1/circuits.json?");
 
@@ -7,6 +9,10 @@ async function getCircuits() {
 	return res.json();
 }
 
+export const metadata = {
+	title: "Formula One Circuit Listing",
+};
+
 export default async function Circuits() {
 	const { MRData: data } = await getCircuits();
 
@@ -14,7 +20,9 @@ export default async function Circuits() {
 		<div>
 			<h1>Circuits</h1>
 			{data.CircuitTable.Circuits.map((circuit) => (
-				<p key={circuit.circuitId}>{circuit.circuitName}</p>
+				<Link key={circuit.circuitId} href={`/circuits/${circuit.circuitId}`}>
+					{circuit.circuitName}
+				</Link>
 			))}
 			<p>Results: {data.total}</p>
 		</div>
