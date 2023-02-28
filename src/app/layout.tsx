@@ -10,8 +10,22 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
-			<body>{children}</body>
+		<html lang="en" className="bg-gray-300">
+			<body>
+				<header>
+					<h1 className="text-3xl font-bold uppercase text-blue-900">F1Stats</h1>
+				</header>
+				<nav></nav>
+				<main>{children}</main>
+				<footer>
+					<span>
+						Data provided by the{" "}
+						<a href="http://ergast.com/mrd/" target="_blank">
+							Ergast API
+						</a>
+					</span>
+				</footer>
+			</body>
 		</html>
 	);
 }

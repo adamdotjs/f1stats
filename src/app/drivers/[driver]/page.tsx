@@ -25,8 +25,10 @@ export default async function Driver({ params }: { params: { slug: string } }) {
 	const driver = data.MRData.DriverTable.Drivers[0];
 
 	return (
-		<h1>
-			{driver.givenName} {driver.familyName}
+		<div>
+			<h1 className="text-5xl font-bold">
+				{driver.givenName} {driver.familyName}
+			</h1>
 			<Suspense fallback={<div>Loading..</div>}>
 				<DriverImage firstName={driver.givenName} lastName={driver.familyName} />
 			</Suspense>
@@ -40,6 +42,6 @@ export default async function Driver({ params }: { params: { slug: string } }) {
 				<dt>Nationality</dt>
 				<dd>{driver.nationality}</dd>
 			</dl>
-		</h1>
+		</div>
 	);
 }
