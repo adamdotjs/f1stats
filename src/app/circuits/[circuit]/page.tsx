@@ -3,6 +3,14 @@ async function getCircuit(params) {
 	return res.json();
 }
 
+async function getCircuitPhoto(name: string) {
+	const formattedName = name.replace(" ", "_");
+	const res = await fetch(
+		`https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&titles=${formattedName}&pithumbsize=400`
+	);
+	return res.json();
+}
+
 export default async function Circuit({ params }: { params: { slug: string } }) {
 	const { MRData: data } = await getCircuit(params);
 

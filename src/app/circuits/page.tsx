@@ -19,11 +19,13 @@ export default async function Circuits() {
 	return (
 		<div>
 			<h1>Circuits</h1>
-			{data.CircuitTable.Circuits.map((circuit) => (
-				<Link key={circuit.circuitId} href={`/circuits/${circuit.circuitId}`}>
-					{circuit.circuitName}
-				</Link>
-			))}
+			<ul>
+				{data.CircuitTable.Circuits.map((circuit) => (
+					<li key={circuit.circuitId}>
+						<Link href={`/circuits/${circuit.circuitId}`}>{circuit.circuitName}</Link>
+					</li>
+				))}
+			</ul>
 			<p>Results: {data.total}</p>
 		</div>
 	);
