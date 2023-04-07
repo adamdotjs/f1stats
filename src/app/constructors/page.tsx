@@ -14,7 +14,7 @@ export default async function Constructors() {
 			<ul>
 				{data.ConstructorTable.Constructors.map((constructor) => (
 					<li key={constructor.constructorId}>
-						<Link href={`/circuits/${constructor.constructorId}`}>{constructor.name}</Link>
+						<Link href={`/constructors/${constructor.constructorId}`}>{constructor.name}</Link>
 					</li>
 				))}
 			</ul>
