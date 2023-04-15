@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,7 +16,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<header>
 					<h1 className="text-3xl font-bold uppercase text-blue-900">F1Stats</h1>
 				</header>
-				<nav></nav>
+				<nav>
+					<ul className="flex gap-4 font-bold">
+						<li>
+							<Link href="/circuits">Circuits</Link>
+						</li>
+						<li>
+							<Link href="/drivers">Drivers</Link>
+						</li>
+						<li>
+							<Link href="/constructors">Constructors</Link>
+						</li>
+						<li>
+							<Link href="/seasons">Seasons</Link>
+						</li>
+					</ul>
+				</nav>
 				<main>{children}</main>
 				<footer>
 					<span>
