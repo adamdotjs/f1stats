@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type Params = {
 	limit?: string;
 	offset?: string;
@@ -8,9 +10,7 @@ export const metadata = {
 };
 
 async function getDrivers(params: Params) {
-	const res = await fetch(
-		`http://ergast.com/api/f1/drivers.json?limit=${params.limit}&offset=${params.offset}`
-	);
+	const res = await fetch(`http://ergast.com/api/f1/drivers.json?limit=${params.limit}&offset=${params.offset}`);
 
 	if (!res.ok) {
 		throw new Error("Something happened while fetching data. Please try again later.");
@@ -29,9 +29,9 @@ export default async function Drivers({
 		<div>
 			<h1>Drivers</h1>
 			{data.DriverTable.Drivers.map((driver) => (
-				<p key={driver.driverId}>
+				<Link key={driver.driverId} href={`/drivers/${driver.driverId}`}>
 					{driver.givenName} {driver.familyName}
-				</p>
+				</Link>
 			))}
 			<p>Results: {data.total}</p>
 			<p>{JSON.stringify(searchParams)}</p>
