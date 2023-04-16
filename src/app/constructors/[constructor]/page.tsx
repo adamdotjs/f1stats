@@ -7,6 +7,7 @@ export default async function Constructor({ params }: { params: { slug: string }
 	const { MRData } = await getConstructor(params);
 	const data = MRData.StandingsTable.StandingsLists;
 	const { url, name, nationality } = data[0].ConstructorStandings[0].Constructor;
+
 	return (
 		<div>
 			<h1>{name}</h1>
