@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { HiStar } from "react-icons/hi";
 
 async function getRaceResults(params) {
 	const res = await fetch(`http://ergast.com/api/f1/${params.season}/${params.round}/results.json`);
@@ -11,8 +12,9 @@ export default async function RaceResults({ params }: { params: { slug: string }
 	return (
 		<div>
 			<h1>
-				Results for {params.season} round {params.round}
+				Results for {params.season} {MRData.RaceTable.Races[0].raceName}
 			</h1>
+			<p>{MRData.RaceTable.Races[0].date}</p>
 			<table>
 				<thead>
 					<tr>
@@ -40,8 +42,9 @@ export default async function RaceResults({ params }: { params: { slug: string }
 							<td>{result.status}</td>
 							<td>{result.laps}</td>
 							<td>{result.Time?.time}</td>
-							<td className={clsx(result.FastestLap?.rank === "1" ? "font-bold" : "")}>
+							<td className="flex items-center gap-1">
 								{result.FastestLap?.Time.time}
+								{result.FastestLap?.rank === "1" && <HiStar />}
 							</td>
 						</tr>
 					))}
