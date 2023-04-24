@@ -1,8 +1,5 @@
-import { Inter } from "next/font/google";
-import Link from "next/link";
+import { Sidebar } from "@/components/Sidebar";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
 	title: "Create Next App",
@@ -11,36 +8,12 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en" className="bg-gray-300">
-			<body>
-				<header>
-					<h1 className="text-3xl font-bold uppercase text-blue-900">F1Stats</h1>
-				</header>
-				<nav>
-					<ul className="flex gap-4 font-bold">
-						<li>
-							<Link href="/circuits">Circuits</Link>
-						</li>
-						<li>
-							<Link href="/drivers">Drivers</Link>
-						</li>
-						<li>
-							<Link href="/constructors">Constructors</Link>
-						</li>
-						<li>
-							<Link href="/seasons">Seasons</Link>
-						</li>
-					</ul>
-				</nav>
-				<main>{children}</main>
-				<footer>
-					<span>
-						Data provided by the{" "}
-						<a href="http://ergast.com/mrd/" target="_blank">
-							Ergast API
-						</a>
-					</span>
-				</footer>
+		<html lang="en" className="h-full bg-gray-300">
+			<body className="grid h-full grid-cols-[auto_1fr]">
+				<div className="relative h-full w-max">
+					<Sidebar />
+				</div>
+				<main className="p-4">{children}</main>
 			</body>
 		</html>
 	);
