@@ -29,18 +29,20 @@ const ROUTES = [
 
 const Sidebar = () => {
 	return (
-		<div className="sticky top-0 bg-gray-900 p-4 text-white">
+		<div className="sticky top-0 flex h-full flex-col bg-gray-50 p-4">
 			<h1>F1Stats</h1>
-			<nav>
+			<nav className="mt-8">
 				<ul>
 					{ROUTES.map((route) => (
 						<li key={route.path}>
-							<Link href={route.path}>{route.title}</Link>
+							<Link href={route.path} className="block rounded-md px-4 py-2 hover:bg-gray-100">
+								{route.title}
+							</Link>
 						</li>
 					))}
 				</ul>
 			</nav>
-			<span>
+			<span className="mt-auto text-sm">
 				Data provided by the{" "}
 				<a href="http://ergast.com/mrd/" target="_blank">
 					Ergast API
